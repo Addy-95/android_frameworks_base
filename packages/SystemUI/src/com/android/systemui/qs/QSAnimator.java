@@ -88,7 +88,6 @@ public class QSAnimator implements Callback, PageListener, Listener, OnLayoutCha
     // This animates fading of SecurityFooter and media divider
     private TouchAnimator mAllPagesDelayedAnimator;
     private TouchAnimator mBrightnessAnimator;
-    private TouchAnimator mQQSBrightnessAnimator;
     private HeightExpansionAnimator mQQSTileHeightAnimator;
     private HeightExpansionAnimator mOtherTilesExpandAnimator;
 
@@ -410,16 +409,6 @@ public class QSAnimator implements Callback, PageListener, Listener, OnLayoutCha
             } else {
                 mBrightnessAnimator = null;
             }
-
-            View qqsBrightness = mQuickQSPanelController.getBrightnessView();
-            if (qqsBrightness != null) {
-                mQQSBrightnessAnimator = new TouchAnimator.Builder()
-                        .addFloat(qqsBrightness, "alpha", 1, 0)
-                        .setEndDelay(.5f)
-                        .build();
-            } else {
-                mQQSBrightnessAnimator = null;
-            }
             mFirstPageAnimator = firstPageBuilder
                     .setListener(this)
                     .build();
@@ -531,9 +520,6 @@ public class QSAnimator implements Callback, PageListener, Listener, OnLayoutCha
             mAllPagesDelayedAnimator.setPosition(position);
             if (mBrightnessAnimator != null) {
                 mBrightnessAnimator.setPosition(position);
-            }
-            if (mQQSBrightnessAnimator != null) {
-                mQQSBrightnessAnimator.setPosition(position);
             }
         }
     }
